@@ -2,7 +2,6 @@
 
 Este arquivo reúne **cada objeto que criamos no CODESYS**, na versão final (Fases 1 e 2 juntas), com comentários explicando o que cada linha faz. Dá para copiar e colar direto no projeto.
 
-> Escolhi markdown (e não PDF) porque você vai copiar o código para o CODESYS, e em PDF a cópia costuma quebrar linhas e indentação. Se quiser também em PDF para leitura, é só pedir.
 
 ---
 
