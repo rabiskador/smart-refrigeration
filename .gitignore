@@ -9,3 +9,8 @@ env/
 
 # Ignorar pastas do VS Code
 .vscode/
+
+*.bak
+*.compileinfo
+*.opt
+*.tmp
