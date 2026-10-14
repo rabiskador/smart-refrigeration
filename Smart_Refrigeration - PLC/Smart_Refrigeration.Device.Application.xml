@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.14.0</Version>
+    <SymbolConfigObject version="4.8.0.0" runtimeid="3.5.22.40" libversion="4.6.0.0" compiler="3.5.22.40" lmm="3.5.22.40" profile="CODESYS V3.5 SP22 Patch 4+" settings="SupportOPCUA, XmlIncludeNodeFlags, XmlIncludeComments, LayoutCalculator=OptimizedClientSideLayoutCalculator" />
+    <ProjectInfo name="Smart_Refrigeration" devicename="Device" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
+    <TypeSimple name="T_UINT" size="2" swapsize="2" typeclass="UInt" iecname="UINT" />
+    <TypeUserDef name="T_E_CodFalha" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="E_CodFalha" basetype="T_UINT">
+      <UserDefElement type="T_E_CodFalha" iecname="NENHUMA" enumvalue="0">
+        <Comment> sem falha</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="EMERGENCIA" enumvalue="1">
+        <Comment> botão de emergência acionado</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="PDESC_ALTA" enumvalue="2">
+        <Comment> pressão de descarga alta</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="PSUC_BAIXA" enumvalue="3">
+        <Comment> pressão de sucção baixa</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="SOBRECORRENTE" enumvalue="4">
+        <Comment> corrente do motor acima do limite</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="INVERSOR" enumvalue="5">
+        <Comment> falha do inversor de frequência</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_CodFalha" iecname="PARTIDA_TIMEOUT" enumvalue="6">
+        <Comment> não chegou à frequência mínima a tempo</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_E_EstadoComp" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="E_EstadoComp" basetype="T_UINT">
+      <UserDefElement type="T_E_EstadoComp" iecname="PARADO" enumvalue="0">
+        <Comment> motor desligado, esperando comando</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_EstadoComp" iecname="PARTIDA" enumvalue="1">
+        <Comment> inversor subindo até a frequência mínima</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_EstadoComp" iecname="RODANDO" enumvalue="2">
+        <Comment> operando na frequência pedida</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_EstadoComp" iecname="PARANDO" enumvalue="3">
+        <Comment> descendo a rampa até zero</Comment>
+      </UserDefElement>
+      <UserDefElement type="T_E_EstadoComp" iecname="FALHA" enumvalue="4">
+        <Comment> parou por proteção, precisa de reset</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_ST_CompCmd" size="8" nativesize="8" typeclass="Userdef" pouclass="STRUCTURE" iecname="ST_CompCmd">
+      <UserDefElement iecname="bLiga" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bDesliga" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bReset" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bEmergenciaOK" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rHzSet" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_ST_CompProc" size="12" nativesize="12" typeclass="Userdef" pouclass="STRUCTURE" iecname="ST_CompProc">
+      <UserDefElement iecname="rQFrigKW" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rPotKW" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rCOPReal" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_ST_CompSts" size="24" nativesize="24" typeclass="Userdef" pouclass="STRUCTURE" iecname="ST_CompSts">
+      <UserDefElement iecname="eEstado" type="T_E_EstadoComp" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="eFalha" type="T_E_CodFalha" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bRodando" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bFalha" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bAlarme" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rHz" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rAmp" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rPSuc" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="rPDesc" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+  </TypeList>
+  <NodeList>
+    <Node name="Application" nodeflags="NodeTypeBranchNode BranchNodeApplicationName">
+      <Node name="GVL_C1" nodeflags="NodeTypeBranchNode SigTypeGvl">
+        <Node name="C1_Cmd" nodeflags="SigTypeGvl ExportedVariable" type="T_ST_CompCmd" access="ReadWrite">
+          <Comment> comandos (você escreve)</Comment>
+        </Node>
+        <Node name="C1_Proc" nodeflags="SigTypeGvl ExportedVariable" type="T_ST_CompProc" access="Read">
+          <Comment> processo: capacidade, potência, COP (você lê)</Comment>
+        </Node>
+        <Node name="C1_Sts" nodeflags="SigTypeGvl ExportedVariable" type="T_ST_CompSts" access="ReadWrite">
+          <Comment> status (você lê)</Comment>
+        </Node>
+      </Node>
+      <Node name="GVL_Proc" nodeflags="NodeTypeBranchNode SigTypeGvl">
+        <Node name="rQDemandaKW" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment> demanda térmica em uso agora (kW)</Comment>
+        </Node>
+        <Node name="rTCamara" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment> temperatura da câmara (°C)</Comment>
+        </Node>
+        <Node name="rTCond" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment> temperatura de condensação (°C)</Comment>
+        </Node>
+        <Node name="rTEvap" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment> temperatura de evaporação (°C)</Comment>
+        </Node>
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>
