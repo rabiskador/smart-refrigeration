@@ -2,7 +2,10 @@
 
 Este arquivo reúne **cada objeto que criamos no CODESYS**, na versão final (Fases 1 e 2 juntas), com comentários explicando o que cada linha faz. Dá para copiar e colar direto no projeto.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b0d681 (Atualizado OPC VIA PYTHON)
 ---
 
 ## Índice
@@ -19,6 +22,10 @@ Este arquivo reúne **cada objeto que criamos no CODESYS**, na versão final (Fa
 
 ---
 
+## 1. Como usar este arquivo
+## 1. Como usar este arquivo
+## 1. Como usar este arquivo
+## 1. Como usar este arquivo
 ## 1. Como usar este arquivo
 
 ### Onde criar cada objeto
