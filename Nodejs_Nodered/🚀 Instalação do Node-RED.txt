@@ -1,0 +1,26 @@
+🚀 Instalação do Node-RED
+
+Pré-requisito: Node.js já instalado ✅
+
+Passos:
+
+Verificar Node.js:
+
+node -v 
+
+npm install -g npm@11.7.0
+
+Instalar Node-RED:
+
+npm install -g --no-save node-red 
+
+
+Confirmar a instalação:
+
+node-red -v 
+
+Iniciar o Node-RED:
+
+node-red
+
+Acesse: http://localhost:1880 
